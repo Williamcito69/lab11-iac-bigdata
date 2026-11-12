@@ -9,8 +9,7 @@ utilizando Terraform y Floci como emulador de servicios AWS.
 
 - Docker Desktop con motor Linux.
 - Docker Compose.
-- Terraform >= 1.6.
-- Provider hashicorp/aws, versión 6.x.
+- Terraform
 - AWS CLI v2.
 - Git.
 
