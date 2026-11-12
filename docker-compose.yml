@@ -1,0 +1,12 @@
+services:
+  floci:
+    image: floci/floci:latest
+    container_name: ucv-floci
+    ports:
+      - "4566:4566"
+    environment:
+      FLOCI_STORAGE_MODE: persistent
+      FLOCI_STORAGE_PERSISTENT_PATH: /app/data
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped
