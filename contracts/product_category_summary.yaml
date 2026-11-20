@@ -1,0 +1,34 @@
+name: product_category_summary
+domain: products
+owner: product-data-team
+
+description: >
+  Indicadores de productos agrupados por categoria para
+  consumo de Business Intelligence y analitica.
+
+layer: gold
+format: iceberg
+
+source:
+  table: lakehouse.silver.products
+
+output:
+  table: lakehouse.gold.product_category_summary
+
+grain: "Una fila por categoria de producto"
+
+quality:
+  - "category no debe ser nulo ni vacio"
+  - "category debe ser unico"
+  - "product_count debe ser mayor que cero"
+  - "average_price debe ser mayor que cero"
+  - "La suma de product_count debe coincidir con las filas de Silver"
+
+consumers:
+  - business_intelligence
+  - analytics
+  - data_science
+
+refresh:
+  mode: batch
+  orchestration: manual
